@@ -15,28 +15,8 @@ html {
 }
 
 .sidebar {
-  position: absolute;
   width: 80px;
-  left: 0%;
-  right: 89.66%;
-  top: 0%;
-  bottom: 0%;
-}
-
-.sidebar__logo{
-  position: absolute;
-  right: 10.34%;
-  top: 0%;
-  bottom: 88.57%;
-}
-
-.sidebar__rectangle{
-  position: absolute;
-  left: 0%;
-  right: 10.34%;
-  top: 0%;
-  bottom: 0%;
-  background: #25272E;
+  background-color: #25272E;
 }
 
 .sidebar__logo::after {
@@ -46,14 +26,6 @@ html {
   display: block;
   background-color: #1D2028;
   border-bottom: 1px solid #31343C;
-}
-
-.divider{
-  position: absolute;
-  left: 0%;
-  right: 89.66%;
-  top: 11.29%;
-  bottom: 88.29%;
 }
 
 .header {
@@ -67,29 +39,14 @@ html {
 
 .header__title {
   /* Channel name */
-  position: absolute;
-  height: 47px;
-  left: 13.18%;
-  right: 62.02%;
-  font-family: IBM Plex Sans;
-  font-style: normal;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: normal;
   line-height: normal;
   font-size: 36px;
-  color: #626262;
 }
 
 .header__parrots-count {
   display: flex;
-  position: absolute;
-  height: 47px;
-  right: 2.84%;
-  font-family: IBM Plex Sans;
-  font-style: normal;
-  font-weight: normal;
-  line-height: normal;
-  font-size: 36px;
-  color: #626262;
 }
 
 .header__parrots-count::before {
@@ -99,56 +56,15 @@ html {
 }
 
 header__line{
-  position: absolute;
-  left: 10.34%;
-  right: 0%;
-  top: 11.43%;
-  bottom: 88.14%;
   border: 1px solid #EEEEEE;
-}
-
-form{
-  position: absolute;
-  left: 10.34%;
-  right: 0%;
-  top: 85.71%;
-  bottom: 0%;
-  background: #EFEFEF;
-}
-
-.avatar img{
-  /*AVATAR*/
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-  background: url(Image.png);
-  border: 1px solid #979797;
-}
-
-.avatar{
-  position: absolute;
-  left: 13.44%;
-  right: 79.84%;
-  top: 89.14%;
-  bottom: 3.43%;
 }
 
 input{
   position: absolute;
-  left: 23.26%;
-  right: 10.34%;
-  top: 89.14%;
-  bottom: 3.43%;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 6px;
 }
 
 .messages{
-  position: absolute;
-  left: 10.34%;
-  right: 0%;
-  top: 16.14%;
-  bottom: 32.14%;
+  max-height: 100%;
 }

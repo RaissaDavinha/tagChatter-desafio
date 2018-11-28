@@ -147,6 +147,8 @@ app.get("/messages/parrots-count", (req, res) => {
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(apiDocs));
 
+app.use(express.static(__dirname + "/src"));
+
 const server = http.createServer(app);
 
 server.listen(port, () => console.log("App listening on port", port));
