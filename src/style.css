@@ -3,6 +3,7 @@
 html {
   height: 100%;
   background: #F2F2F2;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -59,15 +60,8 @@ header__line{
   border: 1px solid #EEEEEE;
 }
 
-input{
-  position: absolute;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 6px;
-}
-
 .chat{
   height: 450px;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
   overflow-y: scroll; /* Add vertical scrollbar */
   margin: 14px;
 }
@@ -125,4 +119,14 @@ img.parrot{
 
 form{
   background: #EFEFEF;
+  height: 100px;
+  text-align: center;
+}
+
+input{
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  width: 514px;
+  height: 52px;
+  margin-top: 24px;
 }

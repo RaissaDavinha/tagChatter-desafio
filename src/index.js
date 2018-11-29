@@ -1,9 +1,8 @@
-          /*criar classe mensagem
-          /*passar json[i] como parametro para converter
-          /*vetor de classe mensagem 
-          /*apresentar vetor na tela em formato caixas de texto*/
 
 (function(apiUrl) {
+  let oldMessages = [];
+  let messagesList = [];
+
   function fetchParrotsCount() {
     return fetch(apiUrl + "/messages/parrots-count")
       .then(function(response) {
@@ -14,30 +13,27 @@
       });
   }
 
-  function listMessages() {
-      $.get(apiUrl + "/messages")
-          .then(res => {      //json com 200 mensagens, mudar para objeto
-              obj = new classMessage(res[0]);
-              document.getElementById("messages").innerHTML += obj;
-              obj = new classMessage(res[2]);
-              document.getElementById("messages").innerHTML += obj;
-              obj = new classMessage(res[3]);
-              document.getElementById("messages").innerHTML += obj;
-              }
-          )
-    // Faz um request para a API de listagem de mensagens
-    // Atualiza a o conteúdo da lista de mensagens
-    // Deve ser chamado a cada 3 segundos
-   /* setInterval( _ => {
-        $.get(apiUrl + "/messages")
-          .then(res => {      //json com 200 mensagens, mudar para objeto
-            obj = new classMessage(res[0]);
-            document.getElementById("messages").innerHTML += obj;
-          }
-        )
-    }, 3000); */
+    function listMessages() {
+        setInterval(() => {
+            $.get(apiUrl + "/messages")
+                .then(newMessages => {
+                    if(newMessages.toString() != oldMessages.toString()){
 
-  }
+                        oldMessages = [...newMessages];
+
+                        let mailBox = document.getElementById("messages");
+
+                        mailBox.innerHTML = "";
+                        newMessages.forEach(message => {
+                            messagesList.push(new classMessage(message));
+                        });
+
+                        mailBox.innerHTML = messagesList;
+                        console.log(messagesList);
+                    }
+                });
+        }, 3000);
+    }
 
   function parrotMessage(messageId) {
     // Faz um request para marcar a mensagem como parrot no servidor
@@ -61,11 +57,26 @@
   function getMe() {
     // Faz um request para pegar os dados do usuário atual
     // Exibe a foto do usuário atual na tela e armazena o seu ID para quando ele enviar uma mensagem
+      let idUser;
+      let userName;
+      let avatar;
+      let element = document.getElementById('usurious');
+
+      $.get(apiUrl + "/me")
+          .then(res => {
+                  idUser = res.id;
+                  userName = res.name;
+                  avatar = res.avatar;
+                  console.log(avatar);
+                  element.innerHTML = "<img src=" + res.avatar + ">";
+              }
+          );
   }
 
   function initialize() {
     fetchParrotsCount();
     listMessages();
+    getMe();
   }
 
   initialize();
