@@ -15,24 +15,41 @@
   }
 
   function listMessages() {
+      $.get(apiUrl + "/messages")
+          .then(res => {      //json com 200 mensagens, mudar para objeto
+              obj = new classMessage(res[0]);
+              document.getElementById("messages").innerHTML += obj;
+              obj = new classMessage(res[2]);
+              document.getElementById("messages").innerHTML += obj;
+              obj = new classMessage(res[3]);
+              document.getElementById("messages").innerHTML += obj;
+              }
+          )
     // Faz um request para a API de listagem de mensagens
     // Atualiza a o conteúdo da lista de mensagens
     // Deve ser chamado a cada 3 segundos
-    setInterval( _ => {
+   /* setInterval( _ => {
         $.get(apiUrl + "/messages")
-          .then(res => {      /*json com 200 mensagens, mudar para objeto*/
+          .then(res => {      //json com 200 mensagens, mudar para objeto
             obj = new classMessage(res[0]);
             document.getElementById("messages").innerHTML += obj;
-            //trataJson(res);
           }
         )
-    }, 3000); 
+    }, 3000); */
 
   }
 
   function parrotMessage(messageId) {
     // Faz um request para marcar a mensagem como parrot no servidor
     // Altera a mensagem na lista para que ela apareça como parrot na interface
+      element = document.getElementById('parrot');
+      if (element.src.match('light')) {
+          element.src = 'images/parrot.gif';
+          $.put(apiUrl + "/messages/" + messageId + "/parrot");
+      } else {
+        console.log("Erro ao marcar parrot");
+      }
+
   }
 
   function sendMessage(message, authorId) {
@@ -44,14 +61,6 @@
   function getMe() {
     // Faz um request para pegar os dados do usuário atual
     // Exibe a foto do usuário atual na tela e armazena o seu ID para quando ele enviar uma mensagem
-  }
-
-  function trataJson(json){
-    var i = 0;
-    for(i; i < json.length; i++){
-      obj = new classMessage(json[i]);
-      document.getElementById("messages").innerHTML += obj;
-    }
   }
 
   function initialize() {
